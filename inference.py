@@ -11,7 +11,13 @@ api_key = os.getenv("ROBOFLOW_API_KEY")
 
 video = cv2.VideoCapture(0)
 
-handGesture = mp.solutions.hands.Hands()
+handGesture = handGesture = mp.solutions.hands.Hands(
+    static_image_mode=False,  # Continuous tracking, better for video.
+    max_num_hands=1,  # Track only one hand for faster performance.
+    min_detection_confidence=0.7,  # Adjust detection confidence.
+    min_tracking_confidence=0.7  # Adjust tracking confidence.
+)
+
 drawingTools = mp.solutions.drawing_utils
 screenWidth, screenHeight = pyautogui.size()
 
