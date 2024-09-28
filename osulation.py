@@ -4,6 +4,7 @@ import cv2
 from dotenv import load_dotenv
 import os
 import pyautogui
+import mediapipe as mp
 
 def move_to(x, y):
     pyautogui.moveTo(x, y)
@@ -21,7 +22,17 @@ def open_hand():
 
 load_dotenv()
 
+handGesture = mp.solutions.hands.Hands()
+drawingTools = mp.solutions.drawing_utils
 screen_width, screen_height = pyautogui.size()
+cap = cv2.VideoCapture(0)
+image_width, image_height = 640, 480
+if not cap.isOpened():
+    print("Error: Unable to open video source")
+else:
+    # Get the width and height of the video frame
+    image_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    image_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 api_key = os.getenv("ROBOFLOW_API_KEY")
 
@@ -30,29 +41,38 @@ def scale(x, y, screen_width, screen_height, img_width, img_height):
     y = int(y * screen_height / img_height)
     # reflect x
     x = screen_width - x
+    print(x, y)
     return x, y
 
 def my_sink(result, video_frame):
-    # move mouse to center of the hand
-    # print(result["model_1"])
-    try:
-        x = int(result["model_1"][0]["predictions"][0]["x"])
-        y = int(result["model_1"][0]["predictions"][0]["y"])
-        image_width = result["model_1"][0]["image"]["width"]
-        image_height = result["model_1"][0]["image"]["height"]
-        newX, newY = scale(x, y, screen_width, screen_height, image_width, image_height)
-        move_to(newX, newY)
-    except:
-        pass
+    frame = result["output"].numpy_image
+    frame = cv2.flip(frame, 1)
+    frameHeight, frameWidth, _ = frame.shape
+    rgbConvertedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    output = handGesture.process(rgbConvertedFrame)
+    hands = output.multi_hand_landmarks
+
+    if hands:
+        drawingTools.draw_landmarks(frame, hands[0])
+        landmarks = hands[0].landmark
+        for id, landmark in enumerate(landmarks):
+            if id == 5:
+                x = int(landmark.x*frameWidth)
+                y = int(landmark.y*frameHeight)
+                cv2.circle(img=frame, center=(x,y), radius=30, color=(0, 255, 255))
+                mousePositionX = screen_width/frameWidth*x
+                mousePositionY = screen_height/frameHeight*y
+                pyautogui.moveTo(mousePositionX, mousePositionY)
 
     # click if fist, unclick if palm
     try:
-        if result["model_1"][0]["predictions"][0]["class"] == "Rock":
+        class_name = result["model_1"][0]["predictions"][0]['class']  # Class names array
+        print(class_name)
+
+        if class_name == "Rock":
             close_fist()
-            # print("Fist")
         else:
             open_hand()
-            # print("Palm")
     except:
         pass
     
