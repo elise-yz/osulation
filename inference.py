@@ -14,8 +14,9 @@ video = cv2.VideoCapture(0)
 handGesture = handGesture = mp.solutions.hands.Hands(
     static_image_mode=False,  # Continuous tracking, better for video.
     max_num_hands=1,  # Track only one hand for faster performance.
-    min_detection_confidence=0.7,  # Adjust detection confidence.
-    min_tracking_confidence=0.7  # Adjust tracking confidence.
+    min_detection_confidence=0.5,  # Adjust detection confidence.
+    min_tracking_confidence=0.5,  # Adjust tracking confidence.
+    model_complexity=0  # Adjust model complexity.
 )
 
 drawingTools = mp.solutions.drawing_utils
