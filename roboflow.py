@@ -9,9 +9,9 @@ load_dotenv()
 api_key = os.getenv("ROBOFLOW_API_KEY")
 
 def my_sink(result, video_frame):
-    # if result.get("output_image"): # Display an image from the workflow response
-    #     cv2.imshow("Workflow Image", result["output_image"].numpy_image)
-    #     cv2.waitKey(1)
+    if result.get("output2"): # Display an image from the workflow response
+        cv2.imshow("Workflow Image", result["output2"].numpy_image)
+        cv2.waitKey(1)
     print(result) # do something with the predictions of each frame
     
 
