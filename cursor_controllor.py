@@ -17,3 +17,4 @@ def open_hand():
 
 move_to(20, 30)
 close_fist()
+# test
