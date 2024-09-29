@@ -11,8 +11,6 @@ api_key = os.getenv("ROBOFLOW_API_KEY")
 
 pyautogui.PAUSE = 0.05  # Set the pause to 50 milliseconds
 pyautogui.MINIMUM_DURATION = 0.01  # Set the minimum duration to 10 milliseconds
-pyautogui.moveTo(100, 100, duration=0.5, tween=pyautogui.easeInOutQuad)
-
 
 video = cv2.VideoCapture(0)
 
