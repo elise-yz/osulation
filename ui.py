@@ -1,6 +1,40 @@
+import os
+import re
+import base64
+from pathlib import Path
 import streamlit as st
 from inference6 import start_game
 import plotly.graph_objects as go
+
+def markdown_images(markdown):
+    # example image markdown:
+    images = re.findall(r'\<img src.*\>', markdown)
+    return images
+
+
+def img_to_bytes(img_path):
+    img_bytes = Path(img_path).read_bytes()
+    encoded = base64.b64encode(img_bytes).decode()
+    return encoded
+
+
+def img_to_html(img_path, img_alt):
+    img_format = img_path.split(".")[-1]
+    img_html = f'<img src="data:image/{img_format.lower()};base64,{img_to_bytes(img_path)}" alt="{img_alt}" style="max-width: 100%;">'
+
+    return img_html
+
+
+def markdown_insert_images(markdown):
+    images = markdown_images(markdown)
+
+    for image in images:
+        split_info = image.split('\"')
+        image_alt = split_info[-1]
+        image_path = split_info[1]
+        if os.path.exists(image_path):
+            markdown = markdown.replace(image, img_to_html(image_path, image_alt))
+    return markdown
 
 # Custom CSS for styling
 st.markdown(
@@ -281,7 +315,7 @@ elif page == "About":
 elif page == "Team":
     st.header("Meet the Team")
 
-    st.markdown("""
+    st.markdown(markdown_insert_images("""
     <style>
         .team-container {
             display: flex;
@@ -307,7 +341,7 @@ elif page == "Team":
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+      
         .team-member img {
             width: 100px;
             height: 100px;
@@ -338,7 +372,7 @@ elif page == "Team":
             <div>
                 <h4>Cindy Li</h4>
                 <p>CS Sophomore @ Cornell</p>
-                <p>Interests: Tennis, Guitar</p>
+                                <p>Interests: Tennis, Guitar</p>
             </div>
         </div>
         <div class="team-member">
@@ -366,7 +400,7 @@ elif page == "Team":
             </div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
 elif page == "How to Play":
     st.header("How to Play Osulation")
