@@ -175,7 +175,6 @@ if page == "Home":
     )
 
     # CSS for animations and styling
-    # CSS for animations and styling
     st.markdown(
         """
         <style>
@@ -197,12 +196,13 @@ if page == "Home":
 
             .feature-container {
                 text-align: center;
+                color: white;
                 transition: transform 0.3s, box-shadow 0.3s;
                 border-radius: 8px;
                 padding: 10px;
                 margin: 10px;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                background-color: #16c8d1;  
+                background: linear-gradient(135deg, #1f8cba, #0fa5b6); 
                 display: flex;
                 flex-direction: column;
                 justify-content: center;  /* Center content vertically */
@@ -212,6 +212,10 @@ if page == "Home":
             .feature-container:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            }
+
+            .feature-container h4 {
+            color: white; 
             }
 
             .center-content {
@@ -328,7 +332,7 @@ elif page == "Team":
             justify-content: space-around;
             margin: 20px 0;
             padding: 20px;
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #1f8cba, #0fa5b6); 
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
