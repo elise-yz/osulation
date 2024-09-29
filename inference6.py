@@ -5,14 +5,21 @@ from pynput import mouse, keyboard
 import os
 import time
 from screeninfo import get_monitors
-
+from cv2_enumerate_cameras import enumerate_cameras
 
 monitor = get_monitors()[0]
 # Load environment variables
 load_dotenv()
 
 # Initialize webcam and hand gesture recognition
-video = cv2.VideoCapture(0)
+CAMERA_NAME = "Logitech Webcam C925e" # Name of the webcame
+CAMERA_INDEX = 0
+
+for camera_info in enumerate_cameras():
+    if camera_info.name == CAMERA_NAME:
+        CAMERA_INDEX = camera_info.index
+
+video = cv2.VideoCapture(CAMERA_INDEX) # Open video based on camera index
 video.set(cv2.CAP_PROP_FPS, 20)
 handGesture = mp.solutions.hands.Hands(
     static_image_mode=False,
