@@ -37,7 +37,6 @@ def open_hand():
     globalClickState = False
 
 screenW, screenH = pyautogui.size()
-pyautogui.FAILSAFE = False
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -204,7 +203,7 @@ def main():
                 x = int(x * screenW / cap_width)
                 y = int(y * screenH / cap_height)
                 # print(x, y)
-                pyautogui.moveTo(x, y)
+                mouse_controller.position = (x, y)
         else:
             point_history.append([0, 0])
 
