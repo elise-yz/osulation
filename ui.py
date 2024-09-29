@@ -5,6 +5,7 @@ from pathlib import Path
 import streamlit as st
 from inference6 import start_game
 import plotly.graph_objects as go
+import subprocess
 
 def markdown_images(markdown):
     # example image markdown:
@@ -157,6 +158,7 @@ if page == "Home":
         unsafe_allow_html=True
         )
         start_game()
+        subprocess.run(["open", "-a", "osu!"])
     st.markdown('</div>', unsafe_allow_html=True)
 
     # GitHub link with enhanced styling
