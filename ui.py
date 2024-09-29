@@ -113,6 +113,15 @@ if page == "Home":
 
     st.markdown('<div class="center-content">', unsafe_allow_html=True)
     if st.button("Start Osulation", key="start_button", help="Click to start the game!"):
+        st.markdown(
+        """
+        <script>
+        window.open('', '_self', '');
+        window.close();
+        </script>
+        """,
+        unsafe_allow_html=True
+        )
         start_game()
     st.markdown('</div>', unsafe_allow_html=True)
 
@@ -129,6 +138,7 @@ if page == "Home":
         unsafe_allow_html=True
     )
 
+    # CSS for animations and styling
     # CSS for animations and styling
     st.markdown(
         """
@@ -156,7 +166,7 @@ if page == "Home":
                 padding: 10px;
                 margin: 10px;
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                background-color: #ffffff;
+                background-color: #16c8d1;  
                 display: flex;
                 flex-direction: column;
                 justify-content: center;  /* Center content vertically */
@@ -190,8 +200,10 @@ elif page == "About":
     st.markdown("""
     <div class="about-section">
         <h3>What is Osulation?</h3>
-        <p>Osulation is an innovative project that combines the popular rhythm game osu! with hand gesture controls. 
-        Our goal is to create a more immersive and physically engaging gaming experience.</p>
+        <ul class="feature-list">
+        <li>Osulation is an innovative project that combines the popular rhythm game osu! with hand gesture controls.
+        Our goal is to create a more immersive and physically engaging gaming experience.</li>
+        </ul>
     </div>
     
     <div class="about-section">
@@ -216,6 +228,7 @@ elif page == "About":
     """, unsafe_allow_html=True)
 
     # Adding custom styles with vibrant colors and hover effects
+    # In the About section
     st.markdown(
         """
         <style>
@@ -224,7 +237,7 @@ elif page == "About":
             }
 
             .about-section {
-                background: linear-gradient(135deg, #27b3d5, #16c8d1);
+                background: linear-gradient(135deg, #1f8cba, #0fa5b6); /* Darker gradient */
                 border-radius: 8px;
                 padding: 20px;
                 margin: 20px 0;
@@ -244,12 +257,6 @@ elif page == "About":
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
             }
 
-            .about-section p {
-                font-size: 1.2rem;
-                color: #fff;
-                line-height: 1.6;
-            }
-
             .feature-list {
                 list-style-type: none;
                 padding-left: 0;
@@ -258,7 +265,7 @@ elif page == "About":
 
             .feature-list li {
                 font-size: 1.2rem;
-                color: #fff;
+                color: #fff; /* Ensure text is white for contrast */
                 padding: 10px;
                 margin: 5px 0;
                 border-radius: 5px;
@@ -268,10 +275,6 @@ elif page == "About":
             .feature-list li:hover {
                 background-color: rgba(255, 255, 255, 0.2);
                 transform: scale(1.03);
-            }
-
-            footer {
-                visibility: hidden;
             }
         </style>
         """,
@@ -412,7 +415,7 @@ elif page == "How to Play":
             }
 
             .how-to-play-section {
-                background: linear-gradient(135deg, #27b3d5, #16c8d1);
+                background: linear-gradient(135deg, #1f8cba, #0fa5b6); /* Darker gradient */
                 border-radius: 8px;
                 padding: 20px;
                 margin: 20px 0;
@@ -458,10 +461,6 @@ elif page == "How to Play":
             .step-list li:hover {
                 background-color: rgba(255, 255, 255, 0.3);
                 transform: scale(1.03);
-            }
-
-            footer {
-                visibility: hidden;
             }
         </style>
         """,
