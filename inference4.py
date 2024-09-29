@@ -23,7 +23,7 @@ video = cv2.VideoCapture(CAMERA_INDEX) # Open video based on camera index
 handGesture = mp.solutions.hands.Hands(
     static_image_mode=False,
     max_num_hands=1,
-    min_detection_confidence=0.5,
+    min_detection_confidence=0.8,
     min_tracking_confidence=0.5,
     model_complexity=0
 )
@@ -60,6 +60,8 @@ while True:
     _, frame = video.read()
     frame = cv2.flip(frame, 1)
     frameHeight, frameWidth, _ = frame.shape
+    frameHeight *= 0.4
+    frameWidth *= 0.4
     rgbConvertedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     output = handGesture.process(rgbConvertedFrame)
     hands = output.multi_hand_landmarks
@@ -96,6 +98,8 @@ while True:
             close_fist()
         else:
             open_hand()
+
+    # cv2.imshow('Virtual Mouse', frame)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):  # Press 'q' to exit
         break
