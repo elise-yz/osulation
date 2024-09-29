@@ -86,9 +86,9 @@ Because if our algorithm can handle tracking hyper-precise arm movements at ridi
 <!-- GETTING STARTED -->
 ## Technologies
 
-Technical jargon time 🙂‍↕️
-
 ### Roboflow
+
+To train our model, we used Roboflow, a platform that allows us to easily train models on custom datasets. We combined two datasets hosted on Roboflow, the [Palm Detection Dataset](https://universe.roboflow.com/dasfsahfas/palm-detection-c3si5) and a [Hand Pose Dataset](https://universe.roboflow.com/vision-no7cd/vision-ni0je), to create a dataset that could be used to train a model to detect hands and their poses, specifically fists and open palms. We then used Roboflow to train a model on this dataset, achieving an mAP of 0.995 over 200 epochs.
 
 ### Streamlit
 
