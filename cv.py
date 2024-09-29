@@ -25,7 +25,7 @@ while True:
         break
     
     frame = cv2.resize(frame, (width, height))
-    cv2.imshow("Osulatin!", frame)
+    cv2.imshow("Osulation!", frame)
     if cv2.waitKey(1) == ord('q'): # Press q to quit
         break
 

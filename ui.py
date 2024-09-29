@@ -1,9 +1,34 @@
 import streamlit as st
-from osulation import start_game
 
-# Set the title of the app
-st.title("demo")
+col1, col2 = st.columns(2)
 
-# Add a button
-if st.button("Click Me"):
-    start_game()
+with col1:
+    st.image("assets/osulogo.png")
+
+with col2:
+    st.header("A fun way to play osu with your hands")
+    st.markdown(
+        """
+        <style>
+        .custom-button {
+            background-color: #f5a4d0; 
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Place the button inside the column context
+    if st.markdown('<button class="custom-button">Start Osulation</button>', unsafe_allow_html=True):
+        st.write(" ")
+        # start_game()  # Uncomment this line to start the game
