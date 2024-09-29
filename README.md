@@ -90,6 +90,10 @@ Because if our algorithm can handle tracking hyper-precise arm movements at ridi
 
 To train our model, we used Roboflow, a platform that allows us to easily train models on custom datasets. We combined two datasets hosted on Roboflow, the [Palm Detection Dataset](https://universe.roboflow.com/dasfsahfas/palm-detection-c3si5) and a [Hand Pose Dataset](https://universe.roboflow.com/vision-no7cd/vision-ni0je), to create a dataset that could be used to train a model to detect hands and their poses, specifically fists and open palms. We then used Roboflow to train a model on this dataset, achieving an mAP of 0.995 over 200 epochs.
 
+We used this model to construct a custom workflow that could be used to detect hands and their poses in real-time. This workflow was then integrated into a Streamlit web app that could be used to play osu! with hand gestures.
+
+![alt text](<Screenshot 2024-09-29 090645.png>)
+
 ### Streamlit
 
 We used Streamlit to provide users with an easy way to launch and interact with our application, offering a clear and elegant showcase of our project. Streamlit enabled us to seamlessly present key features, our team, tech stack, gameplay instructions, and data visualizations that were critical in selecting the best model version. Its simplicity allowed us to create a clean and intuitive UI, ensuring a smooth user experience while maintaining a professional and polished look.
@@ -98,19 +102,22 @@ We used Streamlit to provide users with an easy way to launch and interact with 
 
 To determine the best version of our model, we conducted a comprehensive data collection process and leveraged Matlab for in-depth analysis. This allowed us to rigorously compare performance metrics across different iterations, ensuring that we selected the optimal model with confidence while minimizing lag. Our use of Matlab's powerful analytical tools enabled us to gain precise insights, driving the accuracy and reliability of our final choice.
 
+![alt text](image.png)![alt text](image-1.png)
+
 ### Optimizations
 
 To optimize code performance while ensuring high model confidence, we developed and tested various attributes across multiple models. These optimizations included frame splitting, which allowed us to evaluate specific intervals for more efficient resource usage, and smoothing techniques to gradually adjust movements, minimizing abrupt or jittery transitions. We also incorporated calibration to fine-tune sensitivity, enhancing user experience and reducing the need for excessive movement. Additionally, we implemented threading to process frames concurrently, significantly improving both performance and responsiveness.
 
 <!-- CONTACT -->
 ## Contact
-Alex Talreja (LLM agents, Amazon Bedrock, RAG) - vta3nc@virginia.edu
 
-Cindy Yang (frontend, design, systems integration) - cwyang@umich.edu
+Cindy Li (autoclicker, model analytics, optimizations) - cl2674@cornell.edu
 
-David Mazur (model distillation, model integration into web app) - dsmazur@umich.edu
+Cindy Yang (Roboflow workflow, model integration, tuning) - cwyang@umich.edu
 
-Selina Sun (synthetic data generation, scalable data for training, distribution through HuggingFace) - selinas@umich.edu
+Elise Zhu (CV pipeline, Streamlit app, design) - eyz7@georgetown.edu
+
+Selina Sun (data generation, model training, Streamlit app) - selinas@umich.edu
 
 
 <!-- MARKDOWN LINKS & IMAGES -->

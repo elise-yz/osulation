@@ -42,7 +42,7 @@ st.markdown(
     """
     <style>
     body {
-        font-family: 'Arial', sans-serif;
+        font-family: 'Aldrich', sans-serif;
         background-color: #f0f4f8;
         color: #333;
     }
@@ -61,7 +61,7 @@ st.markdown(
         transition: background-color 0.3s, transform 0.3s;
     }
     .custom-button:hover {
-        background-color: #1e6a7e;
+        background-color: #0d4954;
         transform: translateY(-2px);
     }
     .section {
@@ -92,6 +92,43 @@ st.markdown(
     .sidebar.sidebar-content {
         padding-left: 20px; 
     }
+
+    /* Change background color of the sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #f0f0f5;
+        padding-left: 20px;
+    }
+
+    /* Style the sidebar header */
+    [data-testid="stSidebar"] h3 {
+        font-size: 22px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Style the navigation menu (radio button group) */
+    [data-testid="stSidebar"] .css-1d391kg .css-10trblm {
+        background-color: transparent !important;
+        color: white !important;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    /* Hover effect for menu items */
+    [data-testid="stSidebar"] .css-1d391kg .css-10trblm:hover {
+        background-color: #444 !important;
+        color: #f0a500 !important;  /* Hover color */
+    }
+
+    /* Selected item in the navigation menu */
+    [data-testid="stSidebar"] .css-1d391kg .css-10trblm:focus {
+        background-color: #f0a500 !important;  /* Highlight selected item */
+        color: black !important;  /* Text color for selected */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -100,7 +137,7 @@ st.markdown(
 # Sidebar with logo
 st.sidebar.image("assets/osulogoblue.png", width=200)
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "About", "Team", "How to Play", "Data Visualization"])
+page = st.sidebar.radio("", ["Home", "About", "Team", "How to Play", "Data Visualization"])
 
 if page == "Home":
     st.title("Welcome to Osulation!")
