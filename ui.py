@@ -157,8 +157,8 @@ if page == "Home":
         """,
         unsafe_allow_html=True
         )
+        subprocess.run(["start", "osu!.exe"], shell=True)
         start_game()
-        subprocess.run(["open", "-a", "osu!"])
     st.markdown('</div>', unsafe_allow_html=True)
 
     # GitHub link with enhanced styling
