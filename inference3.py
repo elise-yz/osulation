@@ -75,6 +75,8 @@ while True:
     _, frame = video.read()  # Capture a frame from the webcam
     frame = cv2.flip(frame, 1)  # Flip the frame horizontally (mirror effect)
     frameHeight, frameWidth, _ = frame.shape  # Get frame dimensions
+    frameWidth *= 0.4  # Reduce the frame width for better performance
+    frameHeight *= 0.4  # Reduce the frame height for better performance
     rgbConvertedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # Convert BGR to RGB for Mediapipe
     output = handGesture.process(rgbConvertedFrame)  # Process the frame for hand tracking
     hands = output.multi_hand_landmarks  # Get the detected hands
@@ -89,7 +91,7 @@ while True:
         for id, landmark in enumerate(landmarks):
             cx, cy = int(landmark.x * frameWidth), int(landmark.y * frameHeight)
             lmList.append([id, cx, cy])
-            if id == 5:  # Use the index finger base (landmark 5) for mouse control
+            if id == 0:  # Use the index finger base (landmark 5) for mouse control
                 x = int(landmark.x * frameWidth)
                 y = int(landmark.y * frameHeight)
                 cv2.circle(img=frame, center=(x, y), radius=30, color=(0, 255, 255))  # Draw a circle on the finger
