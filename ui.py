@@ -42,7 +42,7 @@ st.markdown(
     """
     <style>
     body {
-        font-family: 'Arial', sans-serif;
+        font-family: 'Aldrich', sans-serif;
         background-color: #f0f4f8;
         color: #333;
     }
@@ -61,7 +61,7 @@ st.markdown(
         transition: background-color 0.3s, transform 0.3s;
     }
     .custom-button:hover {
-        background-color: #1e6a7e;
+        background-color: #0d4954;
         transform: translateY(-2px);
     }
     .section {
@@ -92,6 +92,43 @@ st.markdown(
     .sidebar.sidebar-content {
         padding-left: 20px; 
     }
+
+    /* Change background color of the sidebar */
+    [data-testid="stSidebar"] {
+        background-color: #f0f0f5;
+        padding-left: 20px;
+    }
+
+    /* Style the sidebar header */
+    [data-testid="stSidebar"] h3 {
+        font-size: 22px;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Style the navigation menu (radio button group) */
+    [data-testid="stSidebar"] .css-1d391kg .css-10trblm {
+        background-color: transparent !important;
+        color: white !important;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    /* Hover effect for menu items */
+    [data-testid="stSidebar"] .css-1d391kg .css-10trblm:hover {
+        background-color: #444 !important;
+        color: #f0a500 !important;  /* Hover color */
+    }
+
+    /* Selected item in the navigation menu */
+    [data-testid="stSidebar"] .css-1d391kg .css-10trblm:focus {
+        background-color: #f0a500 !important;  /* Highlight selected item */
+        color: black !important;  /* Text color for selected */
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -100,7 +137,7 @@ st.markdown(
 # Sidebar with logo
 st.sidebar.image("assets/osulogoblue.png", width=200)
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "About", "Team", "How to Play", "Data Visualization"])
+page = st.sidebar.radio("", ["Home", "About", "Team", "How to Play", "Data Visualization"])
 
 if page == "Home":
     st.title("Welcome to Osulation!")
@@ -124,7 +161,9 @@ if page == "Home":
             <div class="feature-container" style="height: {feature_height};">
                 <h4>Intuitive Controls</h4>
                 <p>Use hand movements to play without a controller</p>
-                <img src="https://icons.veryicon.com/png/o/miscellaneous/icon-pack/hand-23.png" width="100" />
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" fill="white" viewBox="0 0 24 24">
+<path d="M 9.5996094 2 L 9.5996094 18.5 L 13.689453 14.609375 L 16.900391 22 L 19.099609 21 L 15.791016 13.703125 L 15.800781 13.699219 L 21.599609 13.199219 L 9.5996094 2 z M 11.599609 6.5996094 L 16.900391 11.599609 L 15.599609 11.699219 L 15.300781 11.699219 L 15 11.800781 L 12.900391 12.699219 L 12.599609 12.800781 L 12.300781 13 L 11.599609 13.699219 L 11.599609 6.5996094 z"></path>
+</svg>
             </div>
         """, unsafe_allow_html=True)
 
@@ -133,7 +172,9 @@ if page == "Home":
             <div class="feature-container" style="height: {feature_height};">
                 <h4>Real-time Tracking</h4>
                 <p>Responsive and accurate gesture recognition</p>
-                <img src="https://www.freeiconspng.com/thumbs/cursor-png/cursor-png-ico-icns-free-icon-download--icon100m-20.png" width="100" />
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" fill="white" width="100" height="100" viewBox="0 0 24 24">
+<path d="M 12 4 C 12 4 5.6992188 4.0003906 4.1992188 4.4003906 C 3.2992187 4.6003906 2.6003906 5.2992187 2.4003906 6.1992188 C 2.0003906 7.6992188 2 12 2 12 C 2 12 2.0003906 16.300781 2.4003906 17.800781 C 2.6003906 18.700781 3.2992187 19.299609 4.1992188 19.599609 C 5.6992188 19.999609 12 20 12 20 C 12 20 18.300781 19.999609 19.800781 19.599609 C 20.700781 19.399609 21.299609 18.700781 21.599609 17.800781 C 21.999609 16.300781 22 12 22 12 C 22 12 21.999609 7.6992187 21.599609 6.1992188 C 21.399609 5.2992187 20.700781 4.7003906 19.800781 4.4003906 C 18.300781 4.0003906 12 4 12 4 z M 12 6 C 14.9 6 18.500781 6.1007813 19.300781 6.3007812 C 19.500781 6.3007812 19.599219 6.4992187 19.699219 6.6992188 C 19.899219 7.5992187 20 10.3 20 12 C 20 13.7 19.899609 16.400781 19.599609 17.300781 C 19.599609 17.500781 19.399219 17.599219 19.199219 17.699219 C 18.499219 17.899219 14.9 18 12 18 C 9.1 18 5.4992187 17.899609 4.6992188 17.599609 C 4.4992187 17.599609 4.4007813 17.399219 4.3007812 17.199219 C 4.1007812 16.399219 4 13.7 4 12 C 4 10.3 4.1007813 7.5992187 4.3007812 6.6992188 C 4.3007812 6.4992187 4.4992187 6.4007813 4.6992188 6.3007812 C 5.4992187 6.1007812 9.1 6 12 6 z M 10 8.5 L 10 15.5 L 16 12 L 10 8.5 z"></path>
+</svg>
             </div>
         """, unsafe_allow_html=True)
 
@@ -142,8 +183,9 @@ if page == "Home":
             <div class="feature-container" style="height: {feature_height};">
                 <h4>Beyond Osu</h4>
                 <p>Control other apps and games using hand movements</p>
-                <img src="https://cdn-icons-png.flaticon.com/512/181/181838.png" width="100" />
-            </div>
+<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" fill="white" viewBox="0 0 24 24">
+<path d="M 12 1 C 11.083334 1 10.268559 1.3797556 9.7519531 1.9609375 C 9.2353472 2.5421194 9 3.2777779 9 4 C 9 4.7222221 9.2353472 5.4578806 9.7519531 6.0390625 C 10.068447 6.3951184 10.504816 6.6623237 11 6.8261719 L 11 7.1054688 C 10.648795 7.1779342 10.303949 7.2874267 9.9707031 7.4375 L 2.1308594 10.966797 L 2.1289062 10.96875 C 1.2905581 11.348818 0.92431009 12.195958 1.0097656 13 L 1 13 L 1 17.615234 C 1 18.158177 1.3018416 18.667228 1.8027344 18.916016 L 8.2949219 22.130859 C 10.634021 23.288504 13.365979 23.288504 15.705078 22.130859 L 22.193359 18.919922 C 22.699054 18.672098 23 18.15705 23 17.615234 L 23 13 L 22.986328 13 C 23.071983 12.19402 22.706153 11.34521 21.865234 10.966797 L 14.025391 7.4375 C 13.693436 7.2880087 13.349798 7.1799055 13 7.1074219 L 13 6.8261719 C 13.495184 6.6623237 13.931553 6.3951184 14.248047 6.0390625 C 14.764653 5.4578806 15 4.7222221 15 4 C 15 3.2777779 14.764653 2.5421194 14.248047 1.9609375 C 13.731441 1.3797556 12.916666 1 12 1 z M 12 3 C 12.416666 3 12.601893 3.1202444 12.751953 3.2890625 C 12.902014 3.4578806 13 3.7222221 13 4 C 13 4.2777779 12.902014 4.5421194 12.751953 4.7109375 C 12.601893 4.8797556 12.416666 5 12 5 C 11.583334 5 11.398107 4.8797556 11.248047 4.7109375 C 11.097986 4.5421194 11 4.2777779 11 4 C 11 3.7222221 11.097986 3.4578806 11.248047 3.2890625 C 11.398107 3.1202444 11.583334 3 12 3 z M 11 9.1933594 L 11 13 L 13 13 L 13 9.1953125 C 13.067261 9.2201233 13.13667 9.2317917 13.203125 9.2617188 L 21.027344 12.783203 L 14.349609 16.394531 C 12.849518 17.205891 11.148529 17.205891 9.6484375 16.394531 L 2.9707031 12.783203 L 10.792969 9.2617188 C 10.860767 9.2311865 10.931364 9.2185665 11 9.1933594 z M 7.5 12 A 1.5 1 0 0 0 7.5 14 A 1.5 1 0 0 0 7.5 12 z M 3 15.072266 L 8.6972656 18.154297 C 10.769174 19.274937 13.228873 19.274937 15.300781 18.154297 L 15.302734 18.154297 L 21 15.072266 L 21 17.277344 L 14.818359 20.337891 C 13.031458 21.222246 10.968542 21.222246 9.1816406 20.337891 L 3 17.277344 L 3 15.072266 z"></path>
+</svg>            </div>
         """, unsafe_allow_html=True)
 
     st.markdown('<div class="center-content">', unsafe_allow_html=True)
@@ -376,6 +418,7 @@ elif page == "Team":
     </style>
 
     <div class="team-container">
+        <a href="https://www.linkedin.com/in/2023cyang/">
         <div class="team-member">
             <img src="assets/cindyli_face.png" alt="Cindy Li">
             <div>
@@ -384,6 +427,8 @@ elif page == "Team":
                                 <p>Interests: Tennis, Guitar</p>
             </div>
         </div>
+        </a>
+        <a href="https://www.linkedin.com/in/2023cyang/">
         <div class="team-member">
             <img src="assets/selina_face.jpeg" alt="Selina Sun">
             <div>
@@ -392,6 +437,8 @@ elif page == "Team":
                 <p>Interests: Nice Life</p>
             </div>
         </div>
+        </a>                    
+        <a href="https://www.linkedin.com/in/2023cyang/">
         <div class="team-member">
             <img src="assets/cindyyang_face.jpeg" alt="Cindy Yang">
             <div>
@@ -400,6 +447,8 @@ elif page == "Team":
                 <p>Interests: Sleep</p>
             </div>
         </div>
+        </a>
+        <a href="https://www.linkedin.com/in/elise-yz/">
         <div class="team-member">
             <img src="assets/elise_face.jpeg" alt="Elise Zhu">
             <div>
@@ -408,6 +457,7 @@ elif page == "Team":
                 <p>Interests: Dance, Cat</p>
             </div>
         </div>
+        </a>
     </div>
     """), unsafe_allow_html=True)
 
