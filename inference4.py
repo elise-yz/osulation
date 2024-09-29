@@ -1,6 +1,7 @@
 # pynput test
 from inference_sdk import InferenceHTTPClient
 import cv2
+from cv2_enumerate_cameras import enumerate_cameras
 import mediapipe as mp
 from dotenv import load_dotenv
 from pynput import mouse, keyboard
@@ -10,7 +11,14 @@ import os
 load_dotenv()
 api_key = os.getenv("ROBOFLOW_API_KEY")
 
-video = cv2.VideoCapture(0)
+CAMERA_NAME = "Logitech Webcam C925e" # Name of the webcame
+CAMERA_INDEX = 0
+
+for camera_info in enumerate_cameras():
+    if camera_info.name == CAMERA_NAME:
+        CAMERA_INDEX = camera_info.index
+
+video = cv2.VideoCapture(CAMERA_INDEX) # Open video based on camera index
 
 handGesture = mp.solutions.hands.Hands(
     static_image_mode=False,
@@ -89,10 +97,7 @@ while True:
         else:
             open_hand()
 
-    cv2.imshow('Virtual Mouse', frame)
-
     if cv2.waitKey(1) & 0xFF == ord('q'):  # Press 'q' to exit
         break
 
-video.release()
 cv2.destroyAllWindows()
