@@ -69,11 +69,12 @@ while True:
     _, frame = video.read()
     frame = cv2.flip(frame, 1)  # Flip the frame horizontally for a mirror effect
     frameHeight, frameWidth, _ = frame.shape
-    frameWidth *= 0.4  # Reduce the frame width for better performance
-    frameHeight *= 0.4  # Reduce the frame height for better performance
+    frameWidth *= 0.4 # Reduce the frame width for better performance
+    frameHeight *= 0.4 # Reduce the frame height for better performance
     rgbConvertedFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     output = handGesture.process(rgbConvertedFrame)
     hands = output.multi_hand_landmarks
+
 
     if hands:
         hand = hands[0]
@@ -102,6 +103,7 @@ while True:
 
                 # Update previous position
                 previousMouseX, previousMouseY = smoothedX, smoothedY
+                print(smoothedX, smoothedY)
 
         # Gesture logic to detect fist closure
         indexX, indexY, indexMid, handBottomY, pinkyX = 0, 0, 0, 0, 0
