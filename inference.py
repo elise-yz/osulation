@@ -9,6 +9,11 @@ import os
 load_dotenv()
 api_key = os.getenv("ROBOFLOW_API_KEY")
 
+pyautogui.PAUSE = 0.05  # Set the pause to 50 milliseconds
+pyautogui.MINIMUM_DURATION = 0.01  # Set the minimum duration to 10 milliseconds
+pyautogui.moveTo(100, 100, duration=0.5, tween=pyautogui.easeInOutQuad)
+
+
 video = cv2.VideoCapture(0)
 
 handGesture = handGesture = mp.solutions.hands.Hands(
@@ -30,11 +35,19 @@ client = InferenceHTTPClient(
 def pause_game():
     pyautogui.press('esc')
 
-def close_fist(): 
+globalClickState = False
+
+def close_fist():
+    global globalClickState
+    if globalClickState: return
     pyautogui.mouseDown()
+    globalClickState = True
 
 def open_hand():
+    global globalClickState
+    if not globalClickState: return
     pyautogui.mouseUp()
+    globalClickState = False
 
 while True:
     _, frame = video.read()
