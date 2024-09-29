@@ -204,7 +204,7 @@ def main():
                     point_history_classifier_labels[most_common_fg_id[0][0]],
                 )
 
-                # THIS HAS PROBLEMS
+                # HAS PROBLEMSTHIS 
                 if keypoint_classifier_labels[hand_sign_id] == "Close" and globalClickState == False:
                     close_fist()
                 elif globalClickState == True and keypoint_classifier_labels[hand_sign_id] == "Open":
