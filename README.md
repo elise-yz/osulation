@@ -92,12 +92,15 @@ To train our model, we used Roboflow, a platform that allows us to easily train 
 
 ### Streamlit
 
+We used Streamlit to provide users with an easy way to launch and interact with our application, offering a clear and elegant showcase of our project. Streamlit enabled us to seamlessly present key features, our team, tech stack, gameplay instructions, and data visualizations that were critical in selecting the best model version. Its simplicity allowed us to create a clean and intuitive UI, ensuring a smooth user experience while maintaining a professional and polished look.
+
 ### Matlab
+
+To determine the best version of our model, we conducted a comprehensive data collection process and leveraged Matlab for in-depth analysis. This allowed us to rigorously compare performance metrics across different iterations, ensuring that we selected the optimal model with confidence while minimizing lag. Our use of Matlab's powerful analytical tools enabled us to gain precise insights, driving the accuracy and reliability of our final choice.
 
 ### Optimizations
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
+To optimize code performance while ensuring high model confidence, we developed and tested various attributes across multiple models. These optimizations included frame splitting, which allowed us to evaluate specific intervals for more efficient resource usage, and smoothing techniques to gradually adjust movements, minimizing abrupt or jittery transitions. We also incorporated calibration to fine-tune sensitivity, enhancing user experience and reducing the need for excessive movement. Additionally, we implemented threading to process frames concurrently, significantly improving both performance and responsiveness.
 
 <!-- CONTACT -->
 ## Contact
