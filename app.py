@@ -15,23 +15,26 @@ from utils import CvFpsCalc
 from model import KeyPointClassifier
 from model import PointHistoryClassifier
 
+from pynput import mouse, keyboard
+
 import pyautogui
+
+mouse_controller = mouse.Controller()
+keyboard_controller = keyboard.Controller()
 
 globalClickState = False
 
 def close_fist():
     global globalClickState
-    pyautogui.mouseDown()
+    if globalClickState: return
+    mouse_controller.press(mouse.Button.left)
     globalClickState = True
 
 def open_hand():
     global globalClickState
-    pyautogui.mouseUp()
+    if not globalClickState: return
+    mouse_controller.release(mouse.Button.left)
     globalClickState = False
-
-pyautogui.PAUSE = 0.05  # Set the pause to 50 milliseconds
-pyautogui.MINIMUM_DURATION = 0.01  # Set the minimum duration to 10 milliseconds
-pyautogui.moveTo(100, 100, duration=0.5, tween=pyautogui.easeInOutQuad)
 
 screenW, screenH = pyautogui.size()
 pyautogui.FAILSAFE = False
@@ -63,8 +66,8 @@ def main():
     args = get_args()
 
     cap_device = args.device
-    cap_width = args.width
-    cap_height = args.height
+    cap_width = args.width * 0.4
+    cap_height = args.height * 0.4
 
     use_static_image_mode = args.use_static_image_mode
     min_detection_confidence = args.min_detection_confidence
