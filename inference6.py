@@ -130,8 +130,9 @@ def start_game():
                     handBottomY = lms[2]
 
             # Check for fist gesture (for dragging)
-            if (indexY < handBottomY) and (indexY > indexMid):
-                cv2.rectangle(rgbConvertedFrame, (indexX, indexY), (pinkyX, handBottomY), (0, 0, 255), 2)
+            tolerance = 10
+            if (indexY < handBottomY+tolerance) and (indexY > indexMid-tolerance):
+                # cv2.rectangle(rgbConvertedFrame, (indexX, indexY), (pinkyX, handBottomY), (0, 0, 255), 2)
                 close_fist()
             else:
                 open_hand()
