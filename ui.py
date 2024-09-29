@@ -52,6 +52,11 @@ st.markdown(
         justify-content: center;
         align-items: center;
     }
+    import streamlit as st
+
+    .sidebar.sidebar-content {
+        padding-left: 20px; 
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -219,7 +224,7 @@ elif page == "About":
             }
 
             .about-section {
-                background: linear-gradient(135deg, #FF7E5F, #feb47b);
+                background: linear-gradient(135deg, #27b3d5, #16c8d1);
                 border-radius: 8px;
                 padding: 20px;
                 margin: 20px 0;
@@ -407,7 +412,7 @@ elif page == "How to Play":
             }
 
             .how-to-play-section {
-                background: linear-gradient(135deg, #6a11cb, #2575fc);
+                background: linear-gradient(135deg, #27b3d5, #16c8d1);
                 border-radius: 8px;
                 padding: 20px;
                 margin: 20px 0;
