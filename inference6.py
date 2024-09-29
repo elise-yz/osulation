@@ -36,6 +36,7 @@ def start_game():
     mouse_controller = mouse.Controller()
     keyboard_controller = keyboard.Controller()
 
+    global globalClickState
     globalClickState = False
 
     # Pause game using 'esc' key
