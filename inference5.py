@@ -3,6 +3,7 @@ import cv2
 import mediapipe as mp
 from dotenv import load_dotenv
 from pynput import mouse, keyboard
+from cv2_enumerate_cameras import enumerate_cameras
 import pyautogui
 import os
 import time
@@ -12,7 +13,14 @@ load_dotenv()
 api_key = os.getenv("ROBOFLOW_API_KEY")
 
 # Initialize webcam and hand gesture recognition
-video = cv2.VideoCapture(0)
+CAMERA_NAME = "Logitech Webcam C925e" # Name of the webcame
+CAMERA_INDEX = 0
+
+for camera_info in enumerate_cameras():
+    if camera_info.name == CAMERA_NAME:
+        CAMERA_INDEX = camera_info.index
+
+video = cv2.VideoCapture(CAMERA_INDEX) # Open video based on camera index
 handGesture = mp.solutions.hands.Hands(
     static_image_mode=False,
     max_num_hands=1,
@@ -103,7 +111,6 @@ while True:
 
                 # Update previous position
                 previousMouseX, previousMouseY = smoothedX, smoothedY
-                print(smoothedX, smoothedY)
 
         # Gesture logic to detect fist closure
         indexX, indexY, indexMid, handBottomY, pinkyX = 0, 0, 0, 0, 0
