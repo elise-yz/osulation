@@ -1,4 +1,5 @@
 import streamlit as st
+from inference6 import start_game
 
 # Custom CSS for styling
 st.markdown(
@@ -62,27 +63,26 @@ page = st.sidebar.radio("Go to", ["Home", "About", "Team", "How to Play"])
 
 if page == "Home":
     st.title("Welcome to Osulation!")
-    st.subheader("A revolutionary way to play osu! with hand gestures")
+    st.subheader("A fun way to play osu! with hand gestures")
     
     st.write("### Key Features")
     col1, col2, col3 = st.columns(3)
     
     with col1:
         st.write("#### Intuitive Controls")
-        st.write("Use natural hand movements to play")
+        st.write("Use hand movements to play without a controller")
     
     with col2:
         st.write("#### Real-time Tracking")
         st.write("Responsive and accurate gesture recognition")
     
     with col3:
-        st.write("#### Custom Difficulty")
-        st.write("Adjustable settings for all skill levels")
+        st.write("#### Beyond Osu")
+        st.write("Control other apps and games using hand movements")
     
     st.markdown('<div class="center-content">', unsafe_allow_html=True)
-    if st.markdown('<button class="custom-button">Start Osulation</button>', unsafe_allow_html=True):
-        st.write(" ")
-        # start_game()  # Uncomment this line to start the game
+    if st.button("Start Osulation", key="start_button"):
+        start_game()
     st.markdown('</div>', unsafe_allow_html=True)
     
     # GitHub link
@@ -113,8 +113,8 @@ elif page == "About":
         <ul>
             <li>Hand gesture recognition for gameplay</li>
             <li>Real-time tracking and responsiveness</li>
-            <li>Customizable difficulty levels</li>
-            <li>Integration with popular osu! beatmaps</li>
+            <li>Can be used with popular osu! beatmaps</li>
+            <li>Applicable to other games and applications</li>
         </ul>
     </div>
     
@@ -123,7 +123,7 @@ elif page == "About":
         <ul>
             <li>Python for backend logic</li>
             <li>OpenCV for image processing</li>
-            <li>MediaPipe for hand tracking</li>
+            <li>Roboflow for hand tracking</li>
             <li>Streamlit for the web interface</li>
         </ul>
     </div>
@@ -175,10 +175,10 @@ elif page == "How to Play":
     <div class="section">
         <h3>Gameplay</h3>
         <ul>
-            <li>Use your right hand to control the cursor movement.</li>
-            <li>Tap with your left hand to click on the circles.</li>
+            <li>Use your right hand to control the gameplay.</li>
+            <li>Move your hand with an open palm to move the cursor.<li>
+            <li>Close your hand into a fist to tap each circle</li>
             <li>Time your taps to the rhythm of the music for higher scores.</li>
-            <li>Try to maintain combo streaks for bonus points!</li>
         </ul>
     </div>
     
@@ -187,8 +187,7 @@ elif page == "How to Play":
         <ul>
             <li>Practice makes perfect! Start with easier beatmaps and work your way up.</li>
             <li>Ensure good lighting for better hand tracking.</li>
-            <li>Experiment with different hand positions to find what's most comfortable for you.</li>
-            <li>Take breaks to avoid fatigue during long play sessions.</li>
+            <li>Make sure your camera is level and stable.</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
