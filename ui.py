@@ -413,6 +413,7 @@ elif page == "Team":
     </style>
 
     <div class="team-container">
+        <a href="https://www.linkedin.com/in/cindy-li-569a30187/" style="text-decoration: none; 
         <div class="team-member">
             <img src="assets/cindyli_face.png" alt="Cindy Li">
             <div>
@@ -421,6 +422,8 @@ elif page == "Team":
                                 <p>Interests: Tennis, Guitar</p>
             </div>
         </div>
+        </a>
+        <a href="https://www.linkedin.com/in/selina-sun-550301227/" style="text-decoration: none; 
         <div class="team-member">
             <img src="assets/selina_face.jpeg" alt="Selina Sun">
             <div>
@@ -429,6 +432,8 @@ elif page == "Team":
                 <p>Interests: Nice Life</p>
             </div>
         </div>
+        </a>
+        <a href="https://www.linkedin.com/in/2023cyang/" style="text-decoration: none; color: inherit;">
         <div class="team-member">
             <img src="assets/cindyyang_face.jpeg" alt="Cindy Yang">
             <div>
@@ -437,6 +442,8 @@ elif page == "Team":
                 <p>Interests: Sleep</p>
             </div>
         </div>
+        </a>
+        <a href="https://www.linkedin.com/in/elise-yz/" style="text-decoration: none; color: inherit;">
         <div class="team-member">
             <img src="assets/elise_face.jpeg" alt="Elise Zhu">
             <div>
@@ -445,6 +452,7 @@ elif page == "Team":
                 <p>Interests: Dance, Cat</p>
             </div>
         </div>
+        </a>
     </div>
     """), unsafe_allow_html=True)
 
