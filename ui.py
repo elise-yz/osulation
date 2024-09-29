@@ -84,7 +84,7 @@ if page == "Home":
             <div class="feature-container" style="height: {feature_height};">
                 <h4>Intuitive Controls</h4>
                 <p>Use hand movements to play without a controller</p>
-                <img src="https://via.placeholder.com/150/4CAF50/FFFFFF/?text=Gesture" width="100" />
+                <img src="https://icons.veryicon.com/png/o/miscellaneous/icon-pack/hand-23.png" width="100" />
             </div>
         """, unsafe_allow_html=True)
 
@@ -93,7 +93,7 @@ if page == "Home":
             <div class="feature-container" style="height: {feature_height};">
                 <h4>Real-time Tracking</h4>
                 <p>Responsive and accurate gesture recognition</p>
-                <img src="https://via.placeholder.com/150/2196F3/FFFFFF/?text=Tracking" width="100" />
+                <img src="https://www.freeiconspng.com/thumbs/cursor-png/cursor-png-ico-icns-free-icon-download--icon100m-20.png" width="100" />
             </div>
         """, unsafe_allow_html=True)
 
@@ -102,7 +102,7 @@ if page == "Home":
             <div class="feature-container" style="height: {feature_height};">
                 <h4>Beyond Osu</h4>
                 <p>Control other apps and games using hand movements</p>
-                <img src="https://via.placeholder.com/150/FF9800/FFFFFF/?text=Control" width="100" />
+                <img src="https://cdn-icons-png.flaticon.com/512/181/181838.png" width="100" />
             </div>
         """, unsafe_allow_html=True)
 
